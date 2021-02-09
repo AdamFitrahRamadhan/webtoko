@@ -53,3 +53,29 @@
   </div>
    <div class="clearfix"> </div>
 </div>
+<div class="box-body no-padding" style="background: white;opacity: 0.9">
+      <div class="table-responsive">
+        <table class="table" id="example">
+          <tr>
+            <th>no</th>
+            <th>nama barang</th>
+            <th>harga jual</th>
+            <th>harga beli</th>
+            <th>stok</th>
+            <th>kategori</th>
+          </tr>
+          <?php
+            $no = 0;
+            foreach($tampil_barang as $i): $no++?>
+          <tr>
+            <td><?=$no;?></td>
+            <td><?=$i->nama_barang;?></td>
+            <td><?=$i->harga_jual;?></td>
+            <td><?=$i->harga_beli;?></td>
+            <td><?=$i->stok;?></td>
+            <td><?=$i->kategori;?></td>
+                      </tr>
+          <?php endforeach;?>
+        </table>
+      </div>
+    </div>

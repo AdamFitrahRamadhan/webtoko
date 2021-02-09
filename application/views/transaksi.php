@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color:white; padding: 10px">
+<div class="container-fluid" style="background-color:white; padding: 10px;opacity: 0.9">
   <h1>Transaksi</h1>
   <div class="box box-success">
     <div class="box-header with-border">
@@ -9,23 +9,23 @@
           <div class="table-responsive">
             <table class="table" id="example">
               <tr>
-                <th>Judul Buku</th>
-                <th>Tahun Terbit</th>
-                <th>Kategori</th>
-                <th>Harga</th>
+                <th>Nama Barang</th>
+                <th>Harga Jual</th>
+                <th>Harga Beli</th>
                 <th>Stok</th>
+                <th>Kategori</th>
                 <th style="text-align:center">Aksi</th>
               </tr>
               <?php
-                foreach($buku as $i): ?>
+                foreach($tampil_barang as $i): ?>
               <tr>
-                <td><?=$i->judul_buku;?></td>
-                <td><?=$i->tahun;?></td>
-                <td><?=$i->nama_kategori;?></td>
-                <td><?=$i->harga;?></td>
+                <td><?=$i->nama_barang;?></td>
+                <td><?=$i->harga_jual;?></td>
+                <td><?=$i->harga_beli;?></td>
                 <td><?=$i->stok;?></td>
+                <td><?=$i->kategori;?></td>
                 <td style="text-align:center">
-                    <a href="<?=base_url('index.php/transaksi/tambah/'.$i->kode_buku)?>" class="btn btn-primary btn-sm">
+                    <a href="<?=base_url('index.php/transaksi/tambah/'.$i->kode_barang)?>" class="btn btn-primary btn-sm">
                         <i class="fa fa-shopping-cart"></i> Pesan
                     </a>
                 </td>
@@ -40,12 +40,11 @@
           <form action="<?=base_url('index.php/transaksi/simpan')?>" method="post">
             <table class="table">
               <tr>
-                <th>ID Buku</th>
-                <th>Judul Buku</th>
+                <th>Nama Barang</th>
+                <th>Harga Jual</th>
+                <th>Harga Beli</th>
+                <th>Stok</th>
                 <th>Kategori</th>
-                <th>Jumlah</th>
-                <th>Harga</th>
-                <th>Sub Total</th>
                 <th>Aksi</th>
               </tr>
               <?php
@@ -77,8 +76,13 @@
             <div class="form-group">
               <label class="col-sm-4">Nama pembeli :</label>
               <div class="col-sm-8">
-                <input type="text" name="nama_pembeli" placeholder="Nama Pembeli" class="form-control" required>
+                <input type="text" name="nama_konsumen" placeholder="Nama Pembeli" class="form-control" required>
               </div>
+              <!-- <div class="form-group">
+              <label class="col-sm-4">Alamat:</label>
+              <div class="col-sm-8">
+                <input type="text" name="alamat" placeholder="Alamat" class="form-control" required>
+              </div> -->
               <br>
             </div>
             </div>

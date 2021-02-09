@@ -5,26 +5,26 @@ class M_transaksi extends CI_Model{
   public function menyimpan()
   {
       $object = array (
-        'nama_pembeli' => $this->input->post('nama_pembeli'),
-        'tgl_beli' => date('Y-m-d'),
-        'total' => $this->input->post('total')
+        'nama_konsumen' => $this->input->post('nama_konsumen'),
+        // 'alamat' => $this->input->post('alamat'),
+        'tgl_penjualan' => date('Y-m-d'),
       );
-      $this->db->insert('transaksi', $object);
-      $tm_transaksi = $this->db->order_by('kode_transaksi', 'desc')
+      $this->db->insert('penjualan', $object);
+      $tm_penjualan = $this->db->order_by('kode_penjualan', 'desc')
                           ->limit(1)
-                          ->get('transaksi')
+                          ->get('penjualan')
                           ->row();
       $hasil = array();
-      for ($i=0 ; $i < count($this->input->post('kode_buku')) ; $i++ ) {
+      for ($i=0 ; $i < count($this->input->post('kode_barang')) ; $i++ ) {
           $hasil[] = array(
-              'kode_transaksi' => $tm_transaksi->kode_transaksi,
-              'kode_buku' => $this->input->post('kode_buku')[$i],
+              'kode_penjualan' => $tm_penjualan->kode_penjualan,
+              'kode_barang' => $this->input->post('kode_barang')[$i],
               'jumlah' => $this->input->post('qty')[$i]
           );
       }
-      $proses =  $this->db->insert_batch('nota', $hasil);
+      $proses =  $this->db->insert_batch('detail_penjualan', $hasil);
       if ($proses) {
-          return $tm_transaksi->kode_transaksi;
+          return $tm_penjualan->kode_penjualan;
       }
       else {
         return 0;
@@ -33,23 +33,22 @@ class M_transaksi extends CI_Model{
 
     public function get_total($id)
     {
-      return $this->db->where('kode_transaksi', $id)
-                      ->get('transaksi')
+      return $this->db->where('kode_penjualan', $id)
+                      ->get('penjualan')
                       ->row();
     }
 
     public function get_nota($id)
     {
-      return $this->db->join('buku', 'buku.kode_buku = nota.kode_buku')
-                      ->join('kategori', 'kategori.kode_kategori = buku.kode_kategori')
-                      ->where('kode_transaksi', $id)
+      return $this->db->join('buku', 'buku.kode_barang = nota.kode_barang')
+                      ->where('kode_penjualan', $id)
                       ->get('nota')
                       ->result();
     }
     public function tm_pesan()
     {
-      $tampilkan = $this->db->order_by('kode_transaksi', 'desc')
-                            ->get('transaksi')->result();
+      $tampilkan = $this->db->order_by('kode_penjualan', 'desc')
+                            ->get('penjualan')->result();
       return $tampilkan;
     }
 

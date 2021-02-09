@@ -33,57 +33,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--logo start-->
 <div class="brand">
     <a href="" class="logo">
-        TOGAMEDIA
+        TOKO
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>
     </div>
 </div>
-<div class="top-nav clearfix">
-    <!--search & user info start-->
-    <ul class="nav pull-right top-menu">
-        <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="">
-                <img alt="" src="<?=base_url()?>aset/images/3.png">
-                <span class="username"><?=$_SESSION['nama_kasir']?> | <?=$_SESSION['level']?></span>
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu extended logout">
-                <li><a href="<?=base_url('index.php/kasir/logout')?>"><i class="fa fa-key"></i> Log Out</a></li>
-            </ul>
-        </li>
-        <!-- user login dropdown end -->
-
-    </ul>
-    <!--search & user info end-->
-</div>
 </header>
-<!--header end-->
-<!--sidebar start-->
 <aside>
     <div id="sidebar" class="nav-collapse">
-        <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
-                <li><a href="<?=base_url('index.php/buku/dashboard')?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-                <?php if ($this->session->userdata("level") =="Admin"):?>
-                <li><a href="<?=base_url('index.php/buku')?>"><i class="fa fa-book"></i><span>Daftar Buku</span></a></li>
-                
-                  <li><a href="<?=base_url('index.php/transaksi/pesanan')?>"><i class="fa fa-list"></i><span>Daftar Pesanan</span></a></li>
-                <?php endif ?>
+                <li><a href="<?=base_url('index.php/barang/dashboard')?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li><a href="<?=base_url('index.php/barang')?>"><i class="fa fa-book"></i><span>Master Barang</span></a></li>                
                   <li><a href="<?=base_url('index.php/transaksi')?>"><i class="fa fa-credit-card"></i><span>Transaksi</span></a></li>
   
             </ul>
           </div>
     </div>
 </aside>
-<!--sidebar end-->
-<!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
     <?php $this->load->view($konten);  ?>
 </section>
- <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
 			  <p>© 2018 Visitors. All rights reserved | Design by <a href="">Adam Fitrah Ramadhan</a></p>
@@ -96,7 +68,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="<?=base_url()?>aset/js/scripts.js"></script>
 <script src="<?=base_url()?>aset/js/jquery.slimscroll.js"></script>
 <script src="<?=base_url()?>aset/js/jquery.nicescroll.js"></script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="<?=base_url()?>aset/js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="<?=base_url()?>aset/js/jquery.scrollTo.js"></script>
 </body>
 </html>
